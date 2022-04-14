@@ -2,10 +2,15 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "hardhat/console.sol";
+
 
 contract LoopToken is ERC20{
     uint constant _init_supply = 100 * (10**18);
     constructor() ERC20("LoopToken", "LT"){
+        console.log("Address %s is deploying contract ", msg.sender);
         _mint(msg.sender, _init_supply);
+        console.log("Minted %s to %s ", _init_supply, msg.sender);
+        console.log("Deployed LoopToken at %s ", address(this));
     }
 }

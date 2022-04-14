@@ -29,10 +29,10 @@ module.exports = {
       //   url: " https://eth-ropsten.alchemyapi.io/v2/L4s_3c9CRpPqUuuz00dmmDeZpqY1vCa1",
       //  blockNumber: 12191610,
       // },
-      mining: {
-        auto: false,
-        interval: 5000,
-      },
+      //mining: {
+      //  auto: false,
+      //  interval: 5000,
+      // },
     },
   },
 };
