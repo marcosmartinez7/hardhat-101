@@ -4,6 +4,7 @@
 // When running the script with `npx hardhat run <script>` you'll find the Hardhat
 // Runtime Environment's members available in the global scope.
 const hre = require("hardhat");
+const ethers = hre.ethers;
 
 async function main() {
   // Hardhat always runs the compile task when running scripts with its command
