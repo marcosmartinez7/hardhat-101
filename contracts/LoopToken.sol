@@ -1,16 +1,25 @@
 // SPDX-License-Identifier: SEE LICENSE IN LICENSE
 pragma solidity ^0.8.0;
 
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "hardhat/console.sol";
+contract LoopToken{
+    mapping(address => uint) public balances;
 
+    event Transfer(address _to, uint _value);
 
-contract LoopToken is ERC20{
-    uint constant _init_supply = 100 * (10**18);
-    constructor() ERC20("LoopToken", "LT"){
-        console.log("Address %s is deploying contract ", msg.sender);
-        _mint(msg.sender, _init_supply);
-        console.log("Minted %s to %s ", _init_supply, msg.sender);
-        console.log("Deployed LoopToken at %s ", address(this));
+    constructor() {
+        balances[msg.sender] = 100 * (10**18);
     }
+
+    function transfer(address _to, uint _value) public returns (bool success){
+        if(balances[msg.sender] < _value){
+            return false;
+        }
+        balances[msg.sender] -= _value;
+        balances[_to] -= _value;
+
+        emit Transfer(_to, _value);
+        return true;
+    }
+
+    
 }
